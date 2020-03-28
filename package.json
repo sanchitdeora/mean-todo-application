@@ -1,0 +1,26 @@
+{
+  "name": "todo-application",
+  "version": "1.0.0",
+  "description": "TODO Application that runs on MEAN stack",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sanchitdeora/mean-todo-application.git"
+  },
+  "author": "Sanchit",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/sanchitdeora/mean-todo-application/issues"
+  },
+  "homepage": "https://github.com/sanchitdeora/mean-todo-application#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongojs": "^3.1.0",
+    "mongoose": "^5.9.6"
+  }
+}

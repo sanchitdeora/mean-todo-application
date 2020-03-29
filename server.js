@@ -11,6 +11,7 @@ var path = require('path');
 // Load MongoDB
 var mongoose = require('mongoose');
 var mongojs = require('mongojs');
+var database = require('./config/database');
 
 var port = process.env.port || 9999;
 // var methodOverride = require('method-override');
@@ -18,9 +19,15 @@ var port = process.env.port || 9999;
 var index = require('./routes/index');
 var todos = require('./routes/todos');
 
+mongoose.connect(database.url);
+
 // View Engine
+// console.log(path.join(__dirname + '/views'));
 app.set('views', path.join(__dirname + '/views'));
-app.set('view_engine', 'ejs');
+app.set('view engine', 'ejs');
+app.engine('html', require('ejs').renderFile);
+
+app.use(express.static(__dirname + "/client"));
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));

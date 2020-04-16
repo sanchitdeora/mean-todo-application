@@ -1,5 +1,5 @@
 <div class = "todo-form bg-outline-primary text-center">
-    <h1>Add Task</h1><br>
+    <h1>{{title}}</h1><br>
     <div class = "form-group">
         <input class = "form-control input-lg" placeholder="Add Task Here" autofocus #todoText>
         <br>
@@ -8,19 +8,20 @@
 </div>
 
 <div class="container my-3 bg-default text-primary">
-    <div *ngFor = "let todo of todos">
+    <div *ngFor = "let todo of todos; let i = index">
         <div class="row">
             <div class="col-sm-1">
                 <input type = "checkbox" [checked] = "todo.done" (click)="updateState($event, todo)">
             </div>
-            <div class="col-sm-8 text-left">
-                <span [hidden] = "m1.get(todo)">{{todo.text}}</span>
-                <input style="width: 80%;" type = "text" [hidden]="!m1.get(todo)" [value]="todo.text" (keypress)="updateTodoText($event, todo)">
-                <input style="width: 20%;" type="button" [hidden]="!m1.get(todo)" value="Cancel" (click)="setEditState(todo, false)" class = "btn-danger pull-right">
+            <div class="col-sm-8 text-left text-light">
+                <span class="notDone" for='todo._id' [hidden] = "editMap.get(todo)" #notDone >{{todo.text}}</span>
+                <!-- <span class="done" [hidden] = "!editMap.get(todo)" [hidden] = "!todo.done" #done><s>{{todo.text}}</s></span> -->
+                <input style="width: 80%;" type = "text" [hidden]="!editMap.get(todo)" [value]="todo.text" (keypress)="updateTodoText($event, todo)">
+                <input style="width: 20%;" type="button" [hidden]="!editMap.get(todo)" value="Cancel" (click)="setEditState(todo, false)" class = "btn-danger pull-right">
             </div>
             <div class="col-sm-3">
                 <input (click)="removeTodo($event, todo)" type ="button" class = "btn btn-outline-danger pull-right" value = "Delete">
-                <input (click)="setEditState(todo, !m1.get(todo))" type ="button" class = "btn btn-outline-primary pull-right" value = "Edit">
+                <input (click)="setEditState(todo, !editMap.get(todo))" type ="button" class = "btn btn-outline-info pull-right" value = "Edit">
             </div>
         </div>
     </div>

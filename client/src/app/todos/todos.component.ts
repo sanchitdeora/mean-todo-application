@@ -8,29 +8,21 @@ import { Task } from '../Task';
   styleUrls: ['./todos.component.css']
 })
 export class TodosComponent implements OnInit {
+  title = 'List';
   todos: Task[];
-  t1: Task;
-  editMode: boolean;
-  m1: Map<Task, Boolean>;
+  editMap: Map<Task, Boolean>;
   constructor(private _todoService: TodoService) { }
 
   ngOnInit(){
-    this.m1 = new Map();
+    this.editMap = new Map();
     this.todos = [];
-    this.editMode = false;
     var i = 0;
     this._todoService.getTodos()
       .subscribe(tasks => {
         for(let todo in tasks) {
-          this.m1.set(tasks[i], false);
-          this.t1 = tasks[i];
+          this.editMap.set(tasks[i], false);
           this.todos.push(tasks[i++]);
         }
-        // console.log(this.m1.get(this.t1));
-        // this.m1.set(this.t1, true)
-        // console.log(this.m1.get(this.t1));
-        // console.log(this.t1);
-        // console.log(this.m1);
       });  
   }
   addTodo(event, text){
@@ -62,19 +54,19 @@ export class TodosComponent implements OnInit {
       text: task.text,
       done: event.target.checked
     };
-
+    task.done = !task.done;
     this._todoService.updateTodo(_task);
     // .subscribe(data => {task.done = !task.done;});
   }
 
   setEditState(task, state) {
-    this.m1.set(task, state);
+    this.editMap.set(task, state);
   }
 
   updateTodoText(event, task) {
     if(event.which == 13) {
       task.text = event.target.value;
-      this.m1.set(task, false);
+      this.editMap.set(task, false);
       var _task = {
         _id: task._id,
         text: task.text,

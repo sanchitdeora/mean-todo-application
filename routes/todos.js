@@ -14,6 +14,7 @@ router.get('/todos', function(req, res, next){
 
 // GET Single Task in TODOs
 router.get('/todo/:id', function(req, res, next){
+    console.log("Successfully Reached SINGLE GET");
     Todo.findOne({
         _id: req.params.id
     }, function(err, task){
@@ -26,7 +27,7 @@ router.get('/todo/:id', function(req, res, next){
 
 // Create POST
 router.post('/todo', function(req, res, next){
-    console.log("Successfully Reached Create");
+    console.log("Successfully Reached CREATE");
     var task = req.body;
     if(!task.text || !(task.done + '')){
         res.status(400);
@@ -53,7 +54,7 @@ router.post('/todo', function(req, res, next){
 
 // Update Task
 router.put('/todo/:_id', function(req, res, next){
-    console.log("Successfully Reached Update");
+    console.log("Successfully Reached UPDATE");
     var task = req.body;
     var updatedObj = {};
     console.log(task);
@@ -85,9 +86,10 @@ router.put('/todo/:_id', function(req, res, next){
 // Delete Task
 router.delete('/todo/:_id', function(req, res, next){
     console.log("Successfully Reached DELETE");
-    Todo.remove({
-        _id: req.params
-    }, '', function(err, result){
+    console.log(req.body);
+    Todo.deleteOne({
+        _id: req.params._id
+    }, function(err, result){
         if(err){
             res.send(err);
         }

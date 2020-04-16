@@ -21,7 +21,8 @@ export class TodoService{
 
     deleteTodo(id) {
         // console.log(id);
-        return this.http.delete('/api/v1/todos/'+id);
+        return this.http.delete('/api/v1/todo/'+id)
+        .subscribe();
     }
 
     updateTodo(task) {

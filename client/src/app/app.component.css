@@ -1,0 +1,12 @@
+@import url("../../bower_components/bootstrap/dist/css/bootstrap.min.css");
+
+.app-title {
+    background-color: black;
+    color: #007bff;
+}
+
+.main-app {
+    background-color: black;
+    border: 1px solid #007bff;
+    border-radius: 25px;
+}

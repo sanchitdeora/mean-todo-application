@@ -4,6 +4,11 @@
         "secure": false,
         "logLevel": "debug",
         "changeOrigin": true
+    },
+	"/users/*": {
+        "target": "http://localhost:9999/",
+        "secure": false,
+        "logLevel": "debug",
+        "changeOrigin": true
     }
-	
 }

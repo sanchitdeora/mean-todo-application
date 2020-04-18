@@ -14,6 +14,8 @@
 .main-app {
     /* background-image: url(../design/background3.jpg);
     background-color: black; */
-    border: 1px solid white;
-    border-radius: 25px;
+    /* border: 1px solid white;
+    border-radius: 25px; */
+    width: 70%;
+    margin-left: 15%;
 }

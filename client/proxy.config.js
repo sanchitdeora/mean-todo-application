@@ -1,11 +1,10 @@
 const PROXY_CONFIG = [
     {
         context: [
-            "/userapi",
-            "/settingsapi",
-            "/productapi",
+            "/api/v1",
+            "/users",
         ],
-        target: "http://localhost:3070",
+        target: "http://localhost:9999",
         secure: false
     }
 ]

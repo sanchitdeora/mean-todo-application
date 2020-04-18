@@ -18,6 +18,7 @@ var port = process.env.port || 9999;
 
 var index = require('./routes/index');
 var todos = require('./routes/todos');
+var users = require('./routes/users');
 
 mongoose.connect(database.url);
 // View Engine
@@ -43,6 +44,7 @@ app.use(bodyParser.urlencoded({extended: false}));
 // });
 
 app.use('/', index);
+app.use('/users', users);
 app.use('/api/v1/', todos);
 
 app.listen(port, function(){

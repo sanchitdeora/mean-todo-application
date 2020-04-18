@@ -1,0 +1,9 @@
+.form-signup {
+    background-color: #f5f5f5;
+    border-radius: 25px;
+}
+
+.form-group {
+    width: 70%;
+    margin-left: 15%;
+}

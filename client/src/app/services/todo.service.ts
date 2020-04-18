@@ -4,9 +4,8 @@ import 'rxjs/add/operator/map';
 
 @Injectable()
 export class TodoService{
-    constructor(private http: HttpClient) {
-
-    }
+    constructor(private http: HttpClient) { }
+    
     getTodos() {
         return this.http.get('/api/v1/todos');
     }

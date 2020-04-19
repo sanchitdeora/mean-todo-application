@@ -12,7 +12,7 @@ export class TodoService{
 
     saveTodo(task) {
         let headers = new HttpHeaders();
-        // console.log(task);
+        console.log(task);
         headers.append('Content-Type', 'application/json');
         return this.http.post('/api/v1/todo', task, {headers: headers, responseType:'json'});
         // .subscribe();

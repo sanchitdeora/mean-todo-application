@@ -36,7 +36,8 @@ router.post('/todo', function(req, res, next){
         });
     } else {
         Todo.create({
-            text : task.text,
+			text : task.text,
+			author : task.author,
             done : false
         }, function(err, todo) {
             if(err){

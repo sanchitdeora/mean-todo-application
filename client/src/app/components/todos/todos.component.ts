@@ -29,6 +29,7 @@ import { Task } from '../../models/Task';
 		var result;
 		var newTask = {
 			text: text.value,
+			author: localStorage.getItem("token-name"),
 			done: false
 		};
 		result = this._todoService.saveTodo(newTask);
@@ -52,6 +53,7 @@ import { Task } from '../../models/Task';
 		var _task = {
 			_id:task._id,
 			text: task.text,
+			author: task.author,
 			done: event.target.checked
 		};
 		task.done = !task.done;
@@ -70,6 +72,7 @@ import { Task } from '../../models/Task';
 		var _task = {
 			_id: task._id,
 			text: task.text,
+			author: task.author,
 			done: task.done
 		};
 

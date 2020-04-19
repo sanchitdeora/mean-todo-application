@@ -6,6 +6,10 @@
     color: white;
 }
 
+.account {
+	margin-top: -25px;
+}
+
 .navbar-toggler:hover {
     background-color: gray;
     transition: 0.5s all;

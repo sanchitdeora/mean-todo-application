@@ -8,26 +8,35 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" routingLink="./todos" href="./todos">Todos</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routingLink="./login" href="./login">Login</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" routingLink="./signup" href="./signup">Signup</a>
 	  </li>
 	  <li class="nav-item">
         <a class="nav-link" routingLink="./dashboard" href="./dashboard">Dashboard</a>
 	  </li>
+      <!-- <li class="nav-item">
+        <a class="nav-link" routingLink="./login" href="./login">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routingLink="./signup" href="./signup">Signup</a>
+	  </li> -->
 	  <li class="nav-item">
         <a class="nav-link text-info" (click)="printState()">Check state</a>
       </li>
-	  <li class="nav-item">
+	  <!-- <li class="nav-item">
         <a class="nav-link text-danger" routingLink="./login" href="./login" (click)="logout()">Log Out</a>
-	  </li>
+	  </li> -->
     </ul>
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+	  <li class="nav-item dropdown">
+        <a class="account nav-link dropdown-toggle text-light" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+			User {{userName}}
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routingLink="./login" href="./login">Log In</a>
+          <a class="dropdown-item" routingLink="./signup" href="./signup">Sign Up</a>
+          <a class="dropdown-item text-danger" routingLink="./login" href="./login" (click)="logout()">Log Out</a>
+        </div>
+      </li>
+	  <!-- <button class="btn btn-outline-danger my-2 my-sm-0" type="submit">Log Out</button> -->
     </form>
   </div>
 </nav>

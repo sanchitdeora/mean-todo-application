@@ -2,7 +2,19 @@
     color: white;
 }
 .btn {
-    margin: 5px 5px 5px 5px;
+    margin: 5px 5px 5px 0px;
+}
+
+.task{
+	/* background-color: black; */
+	border-radius: 25px;
+	border: 1px solid gray;
+	margin-top: 5px;
+	padding: 5px;
+}
+
+.todo-text,.todo-check {
+	padding-top: 10px;
 }
 
 .form-group {

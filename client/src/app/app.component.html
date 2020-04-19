@@ -14,7 +14,16 @@
       </li>
       <li class="nav-item">
         <a class="nav-link" routingLink="./signup" href="./signup">Signup</a>
+	  </li>
+	  <li class="nav-item">
+        <a class="nav-link" routingLink="./dashboard" href="./dashboard">Dashboard</a>
+	  </li>
+	  <li class="nav-item">
+        <a class="nav-link text-info" (click)="printState()">Check state</a>
       </li>
+	  <li class="nav-item">
+        <a class="nav-link text-danger" routingLink="./login" href="./login" (click)="logout()">Log Out</a>
+	  </li>
     </ul>
     <form class="form-inline my-2 my-lg-0">
       <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
@@ -23,8 +32,6 @@
   </div>
 </nav>
 <br>
-<br>
-<p class="text-center text-danger xlg-4">{{current}}</p>
 <div class= "main-app">
   <router-outlet></router-outlet>
   <br>

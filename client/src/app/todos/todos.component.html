@@ -1,8 +1,5 @@
 <div class = "todo-form bg-outline-primary text-center">
     <h1>{{title}}</h1><br>
-    <button type="button" class="btn btn-default" aria-label="Left Align">
-        <span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>
-      </button>
     <div class = "form-group">
         <input class = "form-control input-lg" placeholder="Add Task Here" autofocus #todoText>
         <br>
@@ -12,11 +9,11 @@
 
 <div class="container my-3 bg-default text-primary">
     <div *ngFor = "let todo of todos; let i = index">
-        <div class="row">
-            <div class="col-sm-1">
+        <div class="task row">
+            <div class="todo-check col-sm-1">
                 <input type = "checkbox" [checked] = "todo.done" (click)="updateState($event, todo)">
             </div>
-            <div class="col-sm-8 text-left text-light">
+            <div class="todo-text col-sm-8 text-left text-light">
                 <span class="notDone" for='todo._id' [hidden] = "editMap.get(todo)" #notDone >{{todo.text}}</span>
                 <!-- <span class="done" [hidden] = "!editMap.get(todo)" [hidden] = "!todo.done" #done><s>{{todo.text}}</s></span> -->
                 <input style="width: 80%;" type = "text" [hidden]="!editMap.get(todo)" [value]="todo.text" (keypress)="updateTodoText($event, todo)">
@@ -24,7 +21,7 @@
             </div>
             <div class="col-sm-3">
                 <input (click)="removeTodo($event, todo)" type ="button" class = "btn btn-outline-danger pull-right" value = "Delete">
-                <input (click)="setEditState(todo, !editMap.get(todo))" type ="button" class = "btn btn-outline-info pull-right" value = "Edit">
+                <input (click)="setEditState(todo, !editMap.get(todo))" type ="button" class = "btn btn-info pull-right" value = "Edit">
             </div>
         </div>
     </div>

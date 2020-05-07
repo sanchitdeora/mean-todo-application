@@ -1,0 +1,41 @@
+.showLists {
+	/* border: 1px solid white;
+	border-radius: 15px; */
+}
+
+.errorBlock {
+	border-radius: 15px;
+	background-color: #f8f9fa;
+	padding: 10px;
+	font-weight: bolder;
+	margin-bottom: 10px;
+	
+}
+
+.singleList {
+	border-radius: 15px;
+	width: 32%;
+	margin: 3px 2px 3px 4px;
+	display: inline-block;
+	
+}
+
+.listHeader {
+	padding: 40px 15px 40px 15px;
+	border-radius:15px 15px 0px 0px;
+	background-color: #dc3545;
+	color: white;
+	text-overflow: clip;
+	position: relative;
+}
+
+.listFooter {
+	padding: 15px 0px 15px 0px;
+	border-radius: 0px 0px 15px 15px;
+	background-color: #e9ecef;	
+}
+
+.listFooter a {
+	text-decoration: none;
+	color: black;
+}

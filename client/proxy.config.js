@@ -2,7 +2,8 @@ const PROXY_CONFIG = [
     {
         context: [
             "/api/v1",
-            "/users",
+			"/users",
+			"/lists"
         ],
         target: "http://localhost:9999",
         secure: false

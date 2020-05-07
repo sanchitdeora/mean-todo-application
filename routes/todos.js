@@ -38,6 +38,7 @@ router.post('/todo', function(req, res, next){
         Todo.create({
 			text : task.text,
 			author : task.author,
+			priority: task.priority,
             done : false
         }, function(err, todo) {
             if(err){

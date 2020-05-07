@@ -1,16 +1,118 @@
 .todo-form {
-    color: white;
+	background-color: #f8f9fa ;
+	padding: 30px;
+	border-radius: 15px;
+	opacity: 0.8;
+	transition: 0.5s all;
+}
+
+.todo-form:hover {
+	opacity: 1;
+	transition: 0.5s all;
 }
 .btn {
     margin: 5px 5px 5px 0px;
 }
 
 .task{
-	/* background-color: black; */
-	border-radius: 25px;
-	border: 1px solid gray;
-	margin-top: 5px;
+	background-color: black;
+	border-radius: 15px;
+	border: 1px solid;
+	border-color: none;
+	margin-top: 7px;
 	padding: 5px;
+}
+
+.chkbx-container {
+	display: block;
+	position: relative;
+	padding-left: 35px;
+	margin-bottom: 12px;
+	cursor: pointer;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .chkbx-container input {
+	position: relative;
+	opacity: 0;
+	cursor: pointer;
+	height: 0;
+	width: 0;
+	background-color: #f8f9fa;
+  }
+  
+  /* Create a custom checkbox */
+  .checkmark {
+	position: absolute;
+	top: 0;
+	left: 0;
+	height: 23px;
+	width: 23px;
+	background-color: #f8f9fa;
+	opacity: 0.9;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .chkbx-container:hover input ~ .checkmark {
+	opacity: 1;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .chkbx-container input:checked ~ .checkmark {
+	background-color: black;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .checkmark:after {
+	content: "";
+	position: absolute;
+	display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .chkbx-container input:checked ~ .checkmark:after {
+	display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .chkbx-container .checkmark:after {
+	left: 9px;
+	top: 5px;
+	width: 8px;
+	height: 16px;
+	border: solid white;
+	border-width: 0 2px 2px 0;
+	-webkit-transform: rotate(45deg);
+	-ms-transform: rotate(45deg);
+	transform: rotate(45deg);
+  }  
+
+.tooltip-info {
+	visibility: hidden;
+	position: absolute;
+	color: white;
+	margin-left:100%;
+	margin-top: -25%;
+	background-color: black;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border: 1px solid;
+	border-radius: 15px;
+	width: 80%;
+	
+}
+
+.info-icon {
+	cursor: pointer;
+}
+
+.info-icon:hover ~ .tooltip-info{
+	visibility: visible;
 }
 
 .todo-text,.todo-check {

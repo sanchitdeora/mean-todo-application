@@ -1,11 +1,22 @@
-<div class="app-dashboard text-center text-light">
-	Dashbaord Works
-	<br>
-	<br>
+<div class="app-dashboard text-light">
+	<h4 class="text-center">My Dashboard</h4><br>
 	<div class="form-group">
 		<div class="input-group-prepend">
-			<input type="text" class="form-control ml-5 mr-2" placeholder="New List Name">
-			<button class="btn btn-primary"> Create </button>
+			<input type="text" class="form-control mr-2" placeholder="New List Name" #listName>
+			<button class="btn btn-primary" (click)="addList(listName)"> Create </button>
 		</div>
+	</div>
+	<div class="showLists">
+		<div *ngIf="error" class="errorBlock text-danger">
+			(!!!) List Names have to be unique	
+		</div>
+		<div *ngFor="let list of lists" class="singleList text-center bg-dark ml-2">
+			<div class="listHeader">
+				{{list.name}}
+			</div>
+			<div class="listFooter">
+				<a routingLink="./todos" href="./todos">Open</a>
+			</div>
+		</div> 
 	</div>
 </div>

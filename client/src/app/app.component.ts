@@ -3,6 +3,7 @@ import { TodoService } from './services/todo.service';
 import { UserService } from './services/user.service';
 import { User } from './models/User';
 import { AuthenticationService } from './services/authentication.service';
+import { ListService } from './services/list.service';
 
 @Component({
 	moduleId: 'module.id',
@@ -10,9 +11,10 @@ import { AuthenticationService } from './services/authentication.service';
 	templateUrl: './app.component.html',
 	styleUrls: [
     	'./app.component.css',
-    	'../../bower_components/bootstrap/dist/css/bootstrap.css'
+		'../../bower_components/bootstrap/dist/css/bootstrap.css',
+		'../../bower_components/glyphicons-only-bootstrap/css/bootstrap.min.css'
  	],
- 	providers: [TodoService, UserService]
+ 	providers: [TodoService, UserService, ListService]
 })
 export class AppComponent {
 	title = 'client';

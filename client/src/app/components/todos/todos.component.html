@@ -1,27 +1,51 @@
-<div class = "todo-form bg-outline-primary text-center">
-    <h1>{{title}}</h1><br>
-    <div class = "form-group">
-        <input class = "form-control input-lg" placeholder="Add Task Here" autofocus #todoText>
-        <br>
-        <button (click)="addTodo($event, todoText)" class = "btn btn-outline-primary btn-block">Create</button>
+<form [formGroup]="addTodoForm" class = "todo-form bg-outline-primary text-center">
+	<h2>{{title}}</h2>
+	<div class = "form-group form-row text-left ml-3 mb-0">
+		<label style="width: 70%;">New Task:</label>
+		<span style="width: 4%;"></span>
+		<label style="width: 25%;" for="priority">Priority:</label>
+	</div>
+    <div class = "form-group form-row">
+		<input style="width: 70%;" formControlName="task" class = "form-control" placeholder="Add Task Here" minlength="1" #todoText>
+		
+		<span style="width: 4%;"></span>
+		<select [class.is-invalid] = "addTodoForm.get('priority').invalid && (isSubmitted || addTodoForm.get('priority').touched)" 	style="width: 25%;" class="custom-select" name="priority" id="priority" required="required" formControlName="priority" #todoPriority>
+			<option value="High">High !!!</option>
+			<option value="Medium" selected="selected">Medium !!</option>
+			<option value="Low">Low !</option>
+		</select>
+		<!-- <input type="range" min="1" max="3" style="width: 25%;" class="custom-range mt-2" step='1' value="2" name="priority" id="priority" required="required" formControlName="priority"> -->
+		<br><br>
+		<button (click)="addTodo($event, todoText, todoPriority)" class = "btn btn-primary btn-block">Create</button>		
     </div>
-</div>
+</form>
 
 <div class="container my-3 bg-default text-primary">
     <div *ngFor = "let todo of todos; let i = index">
-        <div class="task row">
-            <div class="todo-check col-sm-1">
+        <div class="task row" [ngStyle]="{'border-color': getColor(todo.priority)}">
+            <!-- <div class="todo-check col-sm-1">
                 <input type = "checkbox" [checked] = "todo.done" (click)="updateState($event, todo)">
-            </div>
-            <div class="todo-text col-sm-8 text-left text-light">
-                <span class="notDone" for='todo._id' [hidden] = "editMap.get(todo)" #notDone >{{todo.text}}</span>
+            </div> -->
+            <div class="todo-text col-sm-9 text-left text-light">
+                <span class="notDone" for='todo._id' [hidden] = "editMap.get(todo)" #notDone >
+					<label class="chkbx-container">{{todo.text}}
+						<input type="checkbox" [checked] = "todo.done" (click)="updateState($event, todo)">
+						<span class="checkmark"></span>
+					  </label>
+				</span>
                 <!-- <span class="done" [hidden] = "!editMap.get(todo)" [hidden] = "!todo.done" #done><s>{{todo.text}}</s></span> -->
                 <input style="width: 80%;" type = "text" [hidden]="!editMap.get(todo)" [value]="todo.text" (keypress)="updateTodoText($event, todo)">
                 <input style="width: 20%;" type="button" [hidden]="!editMap.get(todo)" value="Cancel" (click)="setEditState(todo, false)" class = "btn-danger pull-right">
             </div>
             <div class="col-sm-3">
                 <input (click)="removeTodo($event, todo)" type ="button" class = "btn btn-outline-danger pull-right" value = "Delete">
-                <input (click)="setEditState(todo, !editMap.get(todo))" type ="button" class = "btn btn-info pull-right" value = "Edit">
+				<input (click)="setEditState(todo, !editMap.get(todo))" type ="button" class = "btn btn-outline-secondary pull-right" value = "Edit">
+				<a class="info-icon">
+					<img class="ml-3 pull-right" src="../../../assets/img/24px-OOjs_UI_icon_info_big-invert.png" style="width: 30px; height: 30px;">
+				</a>
+				<div class="tooltip-info" [ngStyle]="{'border-color': getColor(todo.priority)}">
+					Author: {{todo.author}}, Priority: {{todo.priority}}
+				</div>
             </div>
         </div>
     </div>

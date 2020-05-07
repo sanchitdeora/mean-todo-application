@@ -6,7 +6,7 @@
         <div class="input-group-prepend">
             <!-- <span class="input-group-addon"><i class="fa fa-user"></i></span> -->
             <input [class.is-invalid] = "signupForm.get('firstname').invalid && (isSubmitted || signupForm.get('firstname').touched)"
-            formControlName="firstname"  minlength="2" type="text" class="form-control mr-1" name="firstname" placeholder="First name" required="required" autofocus>
+            formControlName="firstname"  minlength="2" type="text" class="form-control mr-1" name="firstname" placeholder="First name" required="required">
             <input [class.is-invalid] = "signupForm.get('lastname').invalid && (isSubmitted || signupForm.get('lastname').touched)"
             formControlName="lastname"  minlength="2" type="text" class="form-control" name="lastname" placeholder="Last name" required="required">
         </div>

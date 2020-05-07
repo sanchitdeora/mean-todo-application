@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {TodoService} from '../../services/todo.service';
+import { TodoService } from '../../services/todo.service';
 import { Task } from '../../models/Task';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 @Component({
     selector: 'todos',
@@ -8,13 +9,20 @@ import { Task } from '../../models/Task';
     styleUrls: ['./todos.component.css']
   })
   export class TodosComponent implements OnInit {
-    title = 'List';
+	title = 'List';
+	selectedOption: string;
+	addTodoForm: FormGroup;
+	isSubmitted = false;
     todos: Task[];
     editMap: Map<Task, Boolean>;
-    constructor(private _todoService: TodoService) { }
+    constructor(private _todoService: TodoService, private formBuilder: FormBuilder) { }
 
     ngOnInit(){
 		this.editMap = new Map();
+		this.addTodoForm  =  this.formBuilder.group({
+			task: [null, Validators.required],
+			priority: [null, Validators.required],
+		});
 		this.todos = [];
 		var i = 0;
 		this._todoService.getTodos()
@@ -23,13 +31,32 @@ import { Task } from '../../models/Task';
 				this.editMap.set(tasks[todo], false);
 				this.todos.push(tasks[todo]);
 			}
-		});  
-    }
-    addTodo(event, text){
+		});
+	}
+
+	get formControls() { 
+		return this.addTodoForm.controls; 
+	}
+
+	getColor(priority) {
+		switch (priority) {
+			case 'High':
+				return '#dc3545';
+			case 'Medium':
+				return '#f8f9fa';
+		  	case 'Low':
+				return '#007bff';
+		}
+	  }
+
+    addTodo(event, text, priority){
+		this.isSubmitted = true;
 		var result;
+		console.log(priority.value);
 		var newTask = {
 			text: text.value,
 			author: localStorage.getItem("token-name"),
+			priority: priority.value,
 			done: false
 		};
 		result = this._todoService.saveTodo(newTask);
@@ -54,6 +81,7 @@ import { Task } from '../../models/Task';
 			_id:task._id,
 			text: task.text,
 			author: task.author,
+			priority: task.priority,
 			done: event.target.checked
 		};
 		task.done = !task.done;
@@ -73,6 +101,7 @@ import { Task } from '../../models/Task';
 			_id: task._id,
 			text: task.text,
 			author: task.author,
+			priority: task.priority,
 			done: task.done
 		};
 

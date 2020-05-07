@@ -13,7 +13,6 @@ import { AppComponent } from 'src/app/app.component';
 })
 export class LoginComponent implements OnInit {
 	loginForm: FormGroup;
-	message: string;  
 	returnUrl: string;  
 	isSubmitted  =  false;
 	users: User[];

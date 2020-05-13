@@ -1,8 +1,3 @@
-.showLists {
-	/* border: 1px solid white;
-	border-radius: 15px; */
-}
-
 .errorBlock {
 	border-radius: 15px;
 	background-color: #f8f9fa;
@@ -22,8 +17,9 @@
 
 .listHeader {
 	padding: 40px 15px 40px 15px;
+	border: 1px solid black;
 	border-radius:15px 15px 0px 0px;
-	background-color: #dc3545;
+	background-color: #e83e8c;
 	color: white;
 	text-overflow: clip;
 	position: relative;
@@ -31,11 +27,18 @@
 
 .listFooter {
 	padding: 15px 0px 15px 0px;
+	border: 1px solid black;
 	border-radius: 0px 0px 15px 15px;
 	background-color: #e9ecef;	
 }
+.listFooter a{
+	padding: 5px;
+	margin-right: -5px;
+	cursor: pointer;
+}
 
-.listFooter a {
+.listFooter button{
 	text-decoration: none;
-	color: black;
+	padding: 5px 0px 5px 0px;
+	width: 90%;
 }

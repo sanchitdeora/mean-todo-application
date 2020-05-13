@@ -1,5 +1,6 @@
-<div class="app-dashboard text-light">
-	<h4 class="text-center">My Dashboard</h4><br>
+<div class="app-dashboard text-light" [hidden]="!dashboardDisplay">
+	<h4 class="text-center">My Dashboard</h4>
+	<br>
 	<div class="form-group">
 		<div class="input-group-prepend">
 			<input type="text" class="form-control mr-2" placeholder="New List Name" #listName>
@@ -10,13 +11,55 @@
 		<div *ngIf="error" class="errorBlock text-danger">
 			(!!!) List Names have to be unique	
 		</div>
-		<div *ngFor="let list of lists" class="singleList text-center bg-dark ml-2">
+		<div *ngFor="let list of lists" class="singleList text-center bg-dark ml-1">
+
 			<div class="listHeader">
-				{{list.name}}
+				<span [hidden]="editMap.get(list)">{{list.name}}</span>
+				<input type="text" [value]="list.name" [hidden]="!editMap.get(list)" (keypress)="editListText($event, list)" minlength="1">
 			</div>
-			<div class="listFooter">
-				<a routingLink="./todos" href="./todos">Open</a>
+
+			<div class="listFooter text-center">
+				<button class="btn btn-outline-primary ml-1" style="width: 69%;" (click)="createComponent	(list)" [hidden]="optionsMap.get(list)">
+					Open
+				</button>
+				
+				<button class="btn btn-outline-danger" style="width: 34%;" (click)="deleteList(list)" [hidden]="!optionsMap.get(list) || editMap.get(list)">
+					Delete
+				</button>
+				<button class="btn btn-outline-secondary ml-2" style="width: 34%;" (click)="setEditState(list, true)" [hidden]="!optionsMap.get(list) || editMap.get(list)">
+					Edit
+				</button>
+				
+				<a class="img-more" [hidden]="editMap.get(list)" (click)="toggleOptionsState(list)">
+					<img style="width: 15%;" src="../../../assets/img/menu.png">
+				</a>
+				
+				<button class="btn btn-outline-danger" [hidden]="!editMap.get(list)" (click)="setEditState(list, false)">
+					Cancel
+				</button>
 			</div>
 		</div> 
 	</div>
+</div>
+
+<div class="top-menu" [hidden]="dashboardDisplay">
+	<button style="width:5%; margin:0 44% 0% 1%; padding:1.25%;" class="btn btn-light" (click)="toggleBack()">
+		<img style="width:85%; margin-bottom: 2px;" src="../../../assets/img/back.png">
+	</button>
+	<button style="width:5%; margin:0 1% 0 44%; padding:1.25%" class="btn btn-light" (click)="toggleInvite()">
+		<img style="width:85%;" src="../../../assets/img/add-user.svg">
+	</button>
+</div>
+<br>
+<div class="form-group" [hidden]="!inviteDisplay">
+	<div class="input-group-prepend">
+		<span class="input-group-text" id="basic-addon1">Enter Email to Invite</span>
+		<input type="email" minlength="5" class="form-control mr-2" #inviteEmail>
+		<button class="btn btn-primary" (click)="inviteUser(inviteEmail)"> Add </button>
+	</div>
+</div>
+
+<div [hidden]="dashboardDisplay">
+	<template #todoContainer>
+	</template>
 </div>

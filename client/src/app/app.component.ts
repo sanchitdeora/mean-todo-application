@@ -24,11 +24,15 @@ export class AppComponent {
 	
 	ngOnInit(){
 		this.currentName = "";
-		this.isLoggedIn = false;
+		this.isLoggedIn = localStorage.getItem('isLoggedIn') == 'false'? false : true;
+	}
+
+	set loggedIn(status) {
+		this.isLoggedIn = status;
 	}
 
 	get userName(): any {
-		return localStorage.getItem('token-name');
+		return localStorage.getItem('currUser-name');
 	}
 	
 	get loginCheck(): any {
@@ -36,16 +40,12 @@ export class AppComponent {
 	}
 
 	updateProfileName(fname, lname) {
-		this.currentName = fname+" "+lname;
+		if(localStorage.getItem('isLoggedIn') == 'true')
+			this.currentName = fname+" "+lname;
 	}
 
   	logout(){
 		this.isLoggedIn = false;
 		this.authenticationService.logout();
-	}
-	printState(){
-		console.log(localStorage.getItem('isLoggedIn'));
-		console.log(localStorage.getItem('token-email'));
-		console.log(localStorage.getItem('token-name'));
 	}
 }

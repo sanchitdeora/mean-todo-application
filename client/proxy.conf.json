@@ -1,5 +1,5 @@
 {
-    "/api/v1/*": {
+    "/todos/*": {
         "target": "http://localhost:9999/",
         "secure": false,
         "logLevel": "debug",

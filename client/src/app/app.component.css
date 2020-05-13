@@ -1,8 +1,6 @@
 @import url("../../bower_components/bootstrap/dist/css/bootstrap.min.css");
 
 .app-title {
-    /* background-image: url(../design/background3.jpg); */
-    /* background-color: black; */
     color: white;
 }
 
@@ -16,10 +14,6 @@
 }
 
 .main-app {
-    /* background-image: url(../design/background3.jpg);
-    background-color: black; */
-    /* border: 1px solid white;
-    border-radius: 25px; */
     width: 70%;
     margin-left: 15%;
 }

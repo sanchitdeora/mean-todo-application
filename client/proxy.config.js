@@ -1,7 +1,7 @@
 const PROXY_CONFIG = [
     {
         context: [
-            "/api/v1",
+            "/todos",
 			"/users",
 			"/lists"
         ],

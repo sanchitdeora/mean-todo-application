@@ -1,6 +1,5 @@
-// TODO Application Model for each List
+// TODO Application Model for each LIST
 
-// Define TODO Application model using Mongoose
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('List', {

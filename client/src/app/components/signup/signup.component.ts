@@ -28,17 +28,13 @@ export class SignupComponent implements OnInit {
   }
 
   onSubmit(){
-    console.log(this.signupForm.value);
     this.isSubmitted = true;
-    // if(this.signupForm.invalid){
-    //   console.log("AWWWWWWWW HEREEEEEEEEEEE");
-    //   return;
-    // }
     var newUser = {
       firstname: this.signupForm.value.firstname,
       lastname: this.signupForm.value.lastname,
       email: this.signupForm.value.email,
-      password: this.signupForm.value.password
+	  password: this.signupForm.value.password,
+	  lists: []
     };
     this.userService.signupUser(newUser);
     this.router.navigateByUrl('/login');

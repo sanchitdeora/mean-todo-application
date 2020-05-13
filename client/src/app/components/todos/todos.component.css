@@ -6,6 +6,10 @@
 	transition: 0.5s all;
 }
 
+.todo-form h2 {
+	color: #343a40;
+}
+
 .todo-form:hover {
 	opacity: 1;
 	transition: 0.5s all;

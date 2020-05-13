@@ -1,11 +1,11 @@
-// TODO Application Model for each User
+// TODO Application Model for each USER
 
-// Define TODO Application model using Mongoose
 var mongoose = require('mongoose');
 
 module.exports = mongoose.model('User', {
     firstname : String,
     lastname : String,
     email : String,
-    password : String,
+	password : String,
+	lists: [String]
 });
